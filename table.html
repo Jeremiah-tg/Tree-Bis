@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-TileColor" content="#5bc0de">
+    <meta name="msapplication-TileImage" content="assets/img/metis-tile.png">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/lib/Font-Awesome/css/font-awesome.min.css">
+
+    <!-- Metis core stylesheet -->
+    <link rel="stylesheet" href="assets/css/main.min.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/lib/datatables/css/demo_page.css">
+    <link rel="stylesheet" href="assets/lib/datatables/css/DT_bootstrap.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+      <script src="assets/lib/html5shiv/html5shiv.js"></script>
+	      <script src="assets/lib/respond/respond.min.js"></script>
+	    <![endif]-->
+
+    <!--Modernizr 3.0-->
+    <script src="assets/lib/modernizr-build.min.js"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="top">
+
+        <!-- .navbar -->
+        <nav class="navbar navbar-inverse navbar-static-top">
+
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <header class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+              <span class="sr-only">Toggle navigation</span> 
+              <span class="icon-bar"></span> 
+              <span class="icon-bar"></span> 
+              <span class="icon-bar"></span> 
+            </button>
+            <a href="index.html" class="navbar-brand">
+              <img src="assets/img/logo.png" alt="">
+            </a> 
+          </header>
+          <div class="topnav">
+            <div class="btn-toolbar">
+              <div class="btn-group">
+                <a data-placement="bottom" data-original-title="Fullscreen" data-toggle="tooltip" class="btn btn-default btn-sm" id="toggleFullScreen">
+                  <i class="glyphicon glyphicon-fullscreen"></i>
+                </a> 
+              </div>
+              <div class="btn-group">
+                <a data-placement="bottom" data-original-title="Show / Hide Sidebar" data-toggle="tooltip" class="btn btn-success btn-sm" id="changeSidebarPos">
+                  <i class="fa fa-expand"></i>
+                </a> 
+              </div>
+              <div class="btn-group">
+                <a data-placement="bottom" data-original-title="E-mail" data-toggle="tooltip" class="btn btn-default btn-sm">
+                  <i class="fa fa-envelope"></i>
+                  <span class="label label-warning">5</span> 
+                </a> 
+                <a data-placement="bottom" data-original-title="Messages" href="#" data-toggle="tooltip" class="btn btn-default btn-sm">
+                  <i class="fa fa-comments"></i>
+                  <span class="label label-danger">4</span> 
+                </a> 
+              </div>
+              <div class="btn-group">
+                <a data-placement="bottom" data-original-title="Document" href="#" data-toggle="tooltip" class="btn btn-default btn-sm">
+                  <i class="fa fa-file"></i>
+                </a> 
+                <a data-toggle="modal" data-original-title="Help" data-placement="bottom" class="btn btn-default btn-sm" href="#helpModal">
+                  <i class="fa fa-question"></i>
+                </a> 
+              </div>
+              <div class="btn-group">
+                <a href="login.html" data-toggle="tooltip" data-original-title="Logout" data-placement="bottom" class="btn btn-metis-1 btn-sm">
+                  <i class="fa fa-power-off"></i>
+                </a> 
+              </div>
+            </div>
+          </div><!-- /.topnav -->
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+            <!-- .nav -->
+            <ul class="nav navbar-nav">
+              <li> <a href="dashboard.html">Dashboard</a>  </li>
+              <li class="active">
+                <a href="table.html">Tables</a> 
+              </li>
+              <li> <a href="500.html">Buyers System</a>  </li>
+              <li class='dropdown '>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Form Elements
+                  <b class="caret"></b>
+                </a> 
+                <ul class="dropdown-menu">
+                  <li> <a href="form-general.html">General</a>  </li>
+                  <!-- <li> <a href="form-validation.html">Validation</a>  </li> -->
+                  <li> <a href="503.html">Profile</a>  </li>
+                  <li> <a href="form-wizard.html">Wizard &amp; File Upload</a>  </li>
+                </ul>
+              </li>
+            </ul><!-- /.nav -->
+          </div>
+        </nav><!-- /.navbar -->
+
+        <!-- header.head -->
+        <header class="head">
+          <div class="search-bar">
+            <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs visible-sm" id="menu-toggle">
+              <i class="fa fa-bars"></i>
+            </a> 
+            <form class="main-search">
+              <div class="input-group">
+                <input type="text" class="input-small form-control" placeholder="Live Search ...">
+                <span class="input-group-btn">
+                                    <button class="btn btn-primary btn-sm text-muted" type="button"><i class="fa fa-search"></i></button>
+                                </span> 
+              </div>
+            </form>
+          </div>
+
+          <!-- ."main-bar -->
+          <div class="main-bar">
+            <h3>
+              <i class="fa fa-table"></i>Table</h3>
+          </div><!-- /.main-bar -->
+        </header>
+
+        <!-- end header.head -->
+      </div><!-- /#top -->
+      <div id="left">
+        <div class="media user-media">
+          <div class="user-media-toggleHover">
+            <span class="fa fa-user"></span> 
+          </div>
+          <div class="user-wrapper">
+            <a class="user-link" href="">
+              <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/user.gif">
+              <span class="label label-danger user-label">16</span> 
+            </a> 
+            <div class="media-body">
+              <h5 class="media-heading">Adam Abraham</h5>
+              <ul class="list-unstyled user-info">
+                <li> <a href="">Administrator</a>  </li>
+                <li>Last Access :
+                  <br>
+                  <small>
+                    <i class="fa fa-calendar"></i>&nbsp;16 Mar 16:32</small> 
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- #menu -->
+        <ul id="menu" class="">
+          <li class="nav-header">Menu</li>
+          <li class="nav-divider"></li>
+          <li class="">
+            <a href="javascript:;">
+              <i class="fa fa-dashboard"></i>
+              <span class="link-title">Dashboard</span> 
+              <span class="fa arrow"></span> 
+            </a> 
+            <ul>
+              <li class="">
+                <a href="dashboard.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;Default Style
+                </a> 
+              </li>
+              <li class="">
+                <a href="alterne.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;Alternative Style
+                </a> 
+              </li>
+            </ul>
+          </li>
+          <li class="">
+            <a href="javascript:;">
+              <i class="fa fa-tasks"></i>
+              <span class="link-title">
+              Components
+            </span> 
+              <span class="fa arrow"></span> 
+            </a> 
+            <ul>
+              <!-- <li class="">
+                <a href="icon.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;Icon</a> 
+              </li>
+              <li class="">
+                <a href="button.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;Button</a> 
+              </li> -->
+              <li class="">
+                <a href="progress.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;Progress</a> 
+              </li>
+              <li class="">
+                <a href="pricing.html">
+                  <i class="fa fa-credit-card"></i>&nbsp;Pricing Table</a> 
+              </li>
+              <!-- <li class="">
+                <a href="bgimage.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;Bg Image</a> 
+              </li>
+              <li class="">
+                <a href="bgcolor.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;Bg Color</a> 
+              </li> -->
+            </ul>
+          </li>
+          <li class="">
+            <a href="javascript:;">
+              <i class="fa fa-pencil"></i>
+              <span class="link-title">
+            Forms
+	  </span> 
+              <span class="fa arrow"></span> 
+            </a> 
+            <ul>
+              <li class="">
+                <a href="form-general.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;General</a> 
+              </li>
+              <!-- <li class="">
+                <a href="form-validation.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;Validation</a> 
+              </li> -->
+              <li class="">
+                <a href="form-wysiwyg.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;WYSIWYG</a> 
+              </li>
+              <li class="">
+                <a href="form-wizard.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;Wizard &amp; File Upload</a> 
+              </li>
+            </ul>
+          </li>
+          <li class="active">
+            <a href="table.html">
+              <i class="fa fa-table"></i>
+              <span class="link-title">Tables</span> 
+            </a> 
+          </li>
+          <!-- <li>
+            <a href="file.html">
+              <i class="fa fa-file"></i>
+              <span class="link-title">
+      File Manager
+          </span> 
+            </a> 
+          </li>
+          <li>
+            <a href="typography.html">
+              <i class="fa fa-font"></i>
+              <span class="link-title">
+            Typography
+          </span>  
+            </a> 
+          </li> -->
+          <li>
+            <a href="maps.html">
+              <i class="fa fa-map-marker"></i><span class="link-title">
+            Maps
+          </span> 
+            </a> 
+          </li>
+          <li>
+            <a href="chart.html">
+              <i class="fa fa fa-bar-chart-o"></i>
+              <span class="link-title">
+            Charts
+          </span> 
+            </a> 
+          </li>
+          <!-- <li>
+            <a href="calendar.html">
+              <i class="fa fa-calendar"></i>
+              <span class="link-title">
+            Calendar
+          </span> 
+            </a> 
+          </li> -->
+          <!-- <li>
+            <a href="javascript:;">
+              <i class="fa fa-exclamation-triangle"></i>
+              <span class="link-title">
+              Error Pages
+            </span> 
+              <span class="fa arrow"></span> 
+            </a> 
+            <ul>
+              <li>
+                <a href="403.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;403</a> 
+              </li>
+              <li>
+                <a href="404.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;404</a> 
+              </li>
+              <li>
+                <a href="405.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;405</a> 
+              </li>
+              <li>
+                <a href="500.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;500</a> 
+              </li>
+              <li>
+                <a href="503.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;503</a> 
+              </li>
+              <li>
+                <a href="offline.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;offline</a> 
+              </li>
+              <li>
+                <a href="countdown.html">
+                  <i class="fa fa-angle-right"></i>&nbsp;Under Construction</a> 
+              </li>
+            </ul>
+          </li> -->
+          <!-- <li>
+            <a href="grid.html">
+              <i class="fa fa-columns"></i>
+              <span class="link-title">
+    Grid
+    </span> 
+            </a> 
+          </li> -->
+          <!-- <li>
+            <a href="blank.html">
+              <i class="fa fa-square-o"></i>
+              <span class="link-title">
+    Blank Page
+    </span> 
+            </a> 
+          </li> -->
+          <li class="nav-divider"></li>
+          <li>
+            <a href="login.html">
+              <i class="fa fa-sign-in"></i>
+              <span class="link-title">
+    Login Page
+    </span> 
+            </a> 
+          </li>
+          <!-- <li>
+            <a href="javascript:;">
+              <i class="fa fa-code"></i>
+              <span class="link-title">
+    	Unlimited Level Menu 
+    	</span> 
+              <span class="fa arrow"></span> 
+            </a> 
+            <ul>
+              <li>
+                <a href="javascript:;">Level 1  <span class="fa arrow"></span>  </a> 
+                <ul>
+                  <li> <a href="javascript:;">Level 2</a>  </li>
+                  <li> <a href="javascript:;">Level 2</a>  </li>
+                  <li>
+                    <a href="javascript:;">Level 2  <span class="fa arrow"></span>  </a> 
+                    <ul>
+                      <li> <a href="javascript:;">Level 3</a>  </li>
+                      <li> <a href="javascript:;">Level 3</a>  </li>
+                      <li>
+                        <a href="javascript:;">Level 3  <span class="fa arrow"></span>  </a> 
+                        <ul>
+                          <li> <a href="javascript:;">Level 4</a>  </li>
+                          <li> <a href="javascript:;">Level 4</a>  </li>
+                          <li>
+                            <a href="javascript:;">Level 4  <span class="fa arrow"></span>  </a> 
+                            <ul>
+                              <li> <a href="javascript:;">Level 5</a>  </li>
+                              <li> <a href="javascript:;">Level 5</a>  </li>
+                              <li> <a href="javascript:;">Level 5</a>  </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li> <a href="javascript:;">Level 4</a>  </li>
+                    </ul>
+                  </li>
+                  <li> <a href="javascript:;">Level 2</a>  </li>
+                </ul>
+              </li>
+              <li> <a href="javascript:;">Level 1</a>  </li>
+              <li>
+                <a href="javascript:;">Level 1  <span class="fa arrow"></span>  </a> 
+                <ul>
+                  <li> <a href="javascript:;">Level 2</a>  </li>
+                  <li> <a href="javascript:;">Level 2</a>  </li>
+                  <li> <a href="javascript:;">Level 2</a>  </li>
+                </ul>
+              </li>
+            </ul>
+          </li> -->
+        </ul><!-- /#menu -->
+      </div><!-- /#left -->
+      <div id="content">
+        <div class="outer">
+          <div class="inner">
+
+            <!--Begin Datatables-->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="box">
+                  <header>
+                    <div class="icons">
+                      <i class="fa fa-table"></i>
+                    </div>
+                    <h5>Sales Record Table</h5>
+                  </header>
+                  <div id="collapse4" class="body">
+                    <table id="dataTable" class="table table-bordered table-condensed table-hover table-striped">
+                      <thead>
+                        <tr>
+                          <th>Platform</th>
+                          <th>Tree Type & Number bought</th>
+                          <th>Name</th>
+                          <th>Amount</th>
+                          <th>Payment Method</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Web App</td>
+                          <td>Rose Flower 45 Seedlings</td>
+                          <td>Micheal Kintu</td>
+                          <td>120,000</td>
+                          <td>C</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Chogum Flower</td>
+                          <td>Path Ministries Int</td>
+                          <td>400,000</td>
+                          <td>C</td>
+                        </tr>
+                        <tr>
+                          <td>Web App</td>
+                          <td>Paw paw seedling</td>
+                          <td>Winnie Ajanki</td>
+                          <td>5000</td>
+                          <td>Ck</td>
+                        </tr>
+                        <tr>
+                          <td>Web App</td>
+                          <td>Oranges & Lemon seedlings</td>
+                          <td>Tonny Odonkara</td>
+                          <td>50,000</td>
+                          <td>Ch</td>
+                        </tr>
+                        <tr>
+                          <td>Web App</td>
+                          <td>Musisi Seedlings</td>
+                          <td>Daran Okello</td>
+                          <td>7,000</td>
+                          <td>Cs</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Mangoe Seedlings 300 Stems</td>
+                          <td>Miah Holdings</td>
+                          <td>90,000</td>
+                          <td>Cs</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Fene Seedlings 34</td>
+                          <td>Tadeo Malinga</td>
+                          <td>54,000</td>
+                          <td>Cs</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Rose Merry Flower</td>
+                          <td>Brian Otegi</td>
+                          <td>4,500</td>
+                          <td>C</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Bamboo</td>
+                          <td>Walter</td>
+                          <td>12,500</td>
+                          <td>C</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Euclyptus 500 seedlings</td>
+                          <td>Denis</td>
+                          <td>250,000</td>
+                          <td>C</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Pines 300 seedlings</td>
+                          <td>Sedrick</td>
+                          <td>600,000</td>
+                          <td>C</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Pines 120 seedlings</td>
+                          <td>Steve Jobs</td>
+                          <td>200,000</td>
+                          <td>C</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Mavule</td>
+                          <td>Eddy</td>
+                          <td>7,000</td>
+                          <td>Cs</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Tiki flower</td>
+                          <td>Kiki</td>
+                          <td>9,000</td>
+                          <td>C</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Neem Tree</td>
+                          <td>Flourance</td>
+                          <td>6,000</td>
+                          <td>C</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Coffee seedlings</td>
+                          <td>Kim</td>
+                          <td>500,000</td>
+                          <td>C</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile App</td>
+                          <td>Pines</td>
+                          <td>Roy</td>
+                          <td>13,700</td>
+                          <td>C</td>
+                        </tr>
+                        <tr>
+                          <td>Other browsers</td>
+                          <td>All others</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>U</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /.row -->
+
+            <!--End Datatables-->
+            <div class="row">
+
+              <!-- .col-lg-6 -->
+              <div class="col-lg-6">
+                <div class="box">
+                  <header>
+                    <h5>Buying ridge</h5>
+                    <div class="toolbar">
+                      <div class="btn-group">
+                        <a href="#defaultTable" data-toggle="collapse" class="btn btn-sm btn-default minimize-box">
+                          <i class="fa fa-angle-up"></i>
+                        </a> 
+                        <a class="btn btn-danger btn-sm close-box">
+                          <i class="fa fa-times"></i>
+                        </a> 
+                      </div>
+                    </div>
+                  </header>
+                  <div id="defaultTable" class="body collapse in">
+                    <table class="table responsive-table">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Bed Number</th>
+                          <th>Seedling Name</th>
+                          <th>Number Bought</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>0101</td>
+                          <td>Pines</td>
+                          <td>250</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>0101</td>
+                          <td>Muvule</td>
+                          <td>94</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>0101</td>
+                          <td>Musisi</td>
+                          <td>450</td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>0102</td>
+                          <td>Rose Flower</td>
+                          <td>7</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div><!-- /.col-lg-6 -->
+
+             
+            <div class="row">
+
+              <!-- .col-lg-6 -->
+              <div class="col-lg-6">
+                <div class="box">
+                  <header>
+                    <h5>Total Seedlings Upload</h5>
+                    <div class="toolbar">
+                      <div class="btn-group">
+                        <a href="#borderedTable" data-toggle="collapse" class="btn btn-default btn-sm minimize-box">
+                          <i class="fa fa-angle-up"></i>
+                        </a> 
+                        <a class="btn btn-danger btn-sm close-box">
+                          <i class="fa fa-times"></i>
+                        </a> 
+                      </div>
+                    </div>
+                  </header>
+                  <div id="borderedTable" class="body collapse in">
+                    <table class="table table-bordered responsive-table">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Seedling Type</th>
+                          <th>Seedling Name</th>
+                          <th>Number Uploaded</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Hard Wood</td>
+                          <td>Muvule</td>
+                          <td>150</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Soft Wood</td>
+                          <td>Musisi</td>
+                          <td>1000</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Soft wood</td>
+                          <td>Pine Improve</td>
+                          <td>1280</td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>Flower</td>
+                          <td>Rose</td>
+                          <td>167</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div><!-- /.col-lg-6 -->
+            
+              <!-- .col-lg-6 -->
+              
+             <div class="row">
+
+            </div>   
+          
+              <!-- end .inner -->
+
+        <!-- end .outer -->
+      </div>
+
+      <!-- end #content -->
+    </div><!-- /#wrap -->
+    <div id="footer">
+      <p>2021 &copy; Tree Biss Admin</p>
+    </div>
+
+    <!-- #helpModal -->
+    <div id="helpModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Need help?</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+              Hello, you need technical assistance, please write to us on  <a href="#">treebis@service.com.</a>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal --><!-- /#helpModal -->
+    <script src="assets/lib/jquery.min.js"></script>
+    <script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="assets/lib/datatables/jquery.dataTables.js"></script>
+    <script src="assets/lib/datatables/DT_bootstrap.js"></script>
+    <script src="assets/lib/tablesorter/js/jquery.tablesorter.min.js"></script>
+    <script src="assets/lib/touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script>
+      $(function() {
+        metisTable();
+        metisSortable();
+      });
+    </script>
+    <script src="assets/lib/screenfull/screenfull.js"></script>
+    <script src="assets/js/main.min.js"></script>
+
+    <!--For Demo Only. Not required -->
+    <script type="text/javascript" src="assets/js/style-switcher.js"></script>
+  </body>
+</html>
